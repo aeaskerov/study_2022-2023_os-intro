@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while getopts :d: opt;
+do
+case $opt in
+	d)dir="$OPTARG"
+esac
+done
+
+find $dir -mtime -7 -mtime +0 -print0 | xargs -0 tar -cf archive_lab114.tar

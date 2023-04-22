@@ -1,0 +1,26 @@
+#!/bin/bash
+
+CC=g++
+EXEC=compare
+SRC=compare.cpp
+
+if [ "$SRC" -nt "$EXEC" ]
+then
+	echo "Rebuilding $EXEC ......"
+	$CC -o $EXEC $SRC
+fi
+
+./$EXEC $1
+ec=$?
+if [ "$ec" == "1" ]
+then
+	echo "argument > 0"
+fi
+if [ "$ec" == "2" ]
+then
+	echo "argument = 0"
+fi
+if [ "$ec" == "3" ]
+then
+	echo "argument < 0"
+fi

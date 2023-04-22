@@ -1,0 +1,12 @@
+while getopts "i:o:p:c:n" opt
+do
+case $opt in
+	i)inputfile="$OPTARG";;
+	o)outputfile="$OPTARG";;
+	p)shablon="$OPTARG";;
+	c)registr="";;
+	n)number="";;
+esac
+done
+
+grep -n "$shablon" "$inputfile" > "$outputfile"
